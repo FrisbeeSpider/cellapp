@@ -39,4 +39,4 @@ class Favcell(db.Model):
   items = db.relationship('Item', backref='favcell', lazy = 'dynamic')
 
 #this creates the database file using all these classes to generate the tables
-db.create_all()
+#db.create_all()
