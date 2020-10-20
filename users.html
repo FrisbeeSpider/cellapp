@@ -1,0 +1,25 @@
+{% extends "_base.html" %}
+{% block content %}
+<h5 class = "title"><span>Welcome to CellApp!</span></h5>
+Welcome to the world of sharing your favorite cells. You can see our users lists of favorite cells here.
+    {% if current_users|length == 0 %}
+    <p style="color:blue;"> Ooops. There are no users currently in your database. Make sure to add them first. </p>
+    {% endif %}
+    <ul>
+    {% for user in current_users %}
+    <li class = "link"><a href="{{ url_for('profile', user_id = user.id)}}">{{user}}</a></li>
+    {% endfor %}
+    </ul>
+
+    <div class="formwrapper">
+        <h2 class="username">Add new profiles:</h2>
+        <form action="" method="post" novalidate>
+        {{ form.hidden_tag() }}
+              <p>
+                  {{ form.username.label }}<br>
+                  {{ form.username(size=50) }}<br>
+              </p>
+              <p>{{ form.submit() }}</p>
+          </form>
+      </div>
+{% endblock %} 
